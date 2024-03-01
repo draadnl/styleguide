@@ -1,0 +1,55 @@
+body {
+    color: var(--color-text);
+    font-family: var(--font-family--body, "TheSans", sans-serif);
+    font-size: var(--font-size--sm, 1rem);
+    font-weight: var(--font-weight--regular, 400);
+    line-height: var(--line-height--md, 1.5);
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+	text-wrap: pretty;
+}
+
+h1 {
+    font-family: var(--font-family--heading);
+    font-size: var(--font-size--xxl, 4.209rem);
+    font-weight: var(--font-weight--bold, 700);
+    line-height: var(--line-height--sm, 1.2);
+}
+
+h2 {
+    font-family: var(--font-family--heading);
+    font-size: var(--font-size--xl, 3.157rem);
+    font-weight: var(--font-weight--bold, 700);
+    line-height: var(--line-height--sm, 1.2);
+}
+
+h3 {
+    font-family: var(--font-family--heading);
+    font-size: var(--font-size--lg, 2.369rem);
+    font-weight: var(--font-weight--bold, 700);
+    line-height: var(--line-height--sm, 1.2);
+}
+
+h4 {
+    font-family: var(--font-family--heading);
+    font-size: var(--font-size--md, 1.777rem);
+    font-weight: var(--font-weight--bold, 700);
+    line-height: var(--line-height--md, 1.5);
+}
+
+blockquote {
+    font-style: italic;
+    margin-block-start: var(--quote--margin-block-start, 1em);
+    margin-block-end: var(--quote--margin-block-end, 1em);
+    margin-inline: var(--quote--margin-inline, 0);
+}
+
+.eyebrow {
+    color: var(--color-secondary);
+    font-family: var(--font-family--heading);
+    font-size: var(--font-size--xs, 0.875rem);
+    font-weight: var(--font-weight--bold, 700);
+    line-height: var(--line-height--lg, 2);
+    text-transform: uppercase;
+}

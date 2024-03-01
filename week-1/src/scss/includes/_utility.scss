@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+.sr-only {
+	@include sr-only;
+
+	&.--focusable {
+		@include sr-only( $focusable: true );
+	}
+}
+

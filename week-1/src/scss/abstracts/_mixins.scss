@@ -1,0 +1,84 @@
+@mixin sr-only ( $focusable: false ) {
+	position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+
+	@if $focusable {
+		&:focus,
+		&:focus-visible {
+			position: fixed;
+			inset: .5rem auto auto .5rem;
+			z-index: 100000;
+			width: auto;
+			height: auto;
+			margin: 0;
+			padding: .9375rem 1.4375rem .875rem; // 15px 23px 14px
+			overflow: visible;
+			clip: auto;
+			white-space: normal;
+			outline-offset: -1px;
+			background: hsl(240, 3.4%, 94.3%);
+			box-shadow: 0 0 2px 2px hsla(0, 0%, 0%, 0.6);
+			color: hsl(206.9, 67.8%, 41.4%);
+			font-size: 14px;
+			font-weight: 600;
+			line-height: normal;
+			text-decoration: none;
+		}
+	}
+}
+
+@mixin heading-1 {
+	font-family: var(--heading-1__font-family);
+    font-size: var(--heading-1__font-size, 4.209rem);
+    font-weight: var(--heading-1__font-weight, 700);
+    line-height: var(--heading-1__line-height, 1.2);
+}
+@mixin heading-2 {
+	font-family: var(--heading-2__font-family);
+	font-size: var(--heading-2__font-size, 3.157rem);
+	font-weight: var(--heading-2__font-weight, 700);
+	line-height: var(--heading-2__line-height, 1.2);
+}
+
+@mixin heading-3 {
+	font-family: var(--heading-3__font-family);
+	font-size: var(--heading-3__font-size, 2.369rem);
+	font-weight: var(--heading-3__font-weight, 700);
+	line-height: var(--heading-3__line-height, 1.2);
+}
+
+@mixin heading-4 {
+	font-family: var(--heading-4__font-family);
+	font-size: var(--heading-4__font-size, 1.777rem);
+	font-weight: var(--heading-4__font-weight, 700);
+	line-height: var(--heading-4__line-height, 1.2);
+}
+
+@mixin heading-5 {
+	font-family: var(--heading-5__font-family);
+	font-size: var(--heading-5__font-size, 1.333rem);
+	font-weight: var(--heading-5__font-weight, 700);
+	line-height: var(--heading-5__line-height, 1.2);
+}
+
+@mixin heading-6 {
+	font-family: var(--heading-6__font-family);
+	font-size: var(--heading-6__font-size, 1rem);
+	font-weight: var(--heading-6__font-weight, 700);
+	line-height: var(--heading-6__line-height, 1.2);
+}
+
+@mixin generate-colors ($colors) {
+	@each $key, $val in $colors {
+		--#{$key}: hsl(#{$val} / var(--#{$key}_opacity, 1));
+		--#{$key}--hover: color-mix(in hsl, hsl(#{$val} / var(--#{$key}_opacity--hover, 1)), #000 10%);
+		--#{$key}--background: color-mix(in hsl, hsl(#{$val} / var(--#{$key}_opacity--background, 1)), #ffff 80%);
+	}
+}

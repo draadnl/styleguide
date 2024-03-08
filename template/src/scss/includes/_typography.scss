@@ -10,34 +10,6 @@ body {
 	text-wrap: pretty;
 }
 
-h1 {
-    font-family: var(--font-family--heading);
-    font-size: var(--font-size--xxl, 4.209rem);
-    font-weight: var(--font-weight--bold, 700);
-    line-height: var(--line-height--sm, 1.2);
-}
-
-h2 {
-    font-family: var(--font-family--heading);
-    font-size: var(--font-size--xl, 3.157rem);
-    font-weight: var(--font-weight--bold, 700);
-    line-height: var(--line-height--sm, 1.2);
-}
-
-h3 {
-    font-family: var(--font-family--heading);
-    font-size: var(--font-size--lg, 2.369rem);
-    font-weight: var(--font-weight--bold, 700);
-    line-height: var(--line-height--sm, 1.2);
-}
-
-h4 {
-    font-family: var(--font-family--heading);
-    font-size: var(--font-size--md, 1.777rem);
-    font-weight: var(--font-weight--bold, 700);
-    line-height: var(--line-height--md, 1.5);
-}
-
 blockquote {
     font-style: italic;
     margin-block-start: var(--quote--margin-block-start, 1em);

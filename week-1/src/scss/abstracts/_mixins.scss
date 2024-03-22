@@ -75,10 +75,19 @@
 	line-height: var(--heading-6__line-height, 1.2);
 }
 
-@mixin generate-colors ($colors) {
+$base_colors: (
+	"color-1": ("5deg 78% 57%", "0deg 0% 100%"),
+	"color-2": ("32deg 100% 95%", "0deg 0% 100%"),
+);
+
+@mixin generate-color ($colors) {
 	@each $key, $val in $colors {
-		--#{$key}: hsl(#{$val} / var(--#{$key}_opacity, 1));
-		--#{$key}--hover: color-mix(in hsl, hsl(#{$val} / var(--#{$key}_opacity--hover, 1)), #000 10%);
-		--#{$key}--background: color-mix(in hsl, hsl(#{$val} / var(--#{$key}_opacity--background, 1)), #ffff 80%);
+		$base: nth($val, 1);
+		$contrast: nth($val, 2);
+
+		--#{$key}: hsl(#{$base} / var(--#{$key}_opacity, 1));
+		--#{$key}--hover: color-mix(in hsl, hsl(#{$base} / var(--#{$key}_opacity--hover, 1)), #000 10%);
+		--#{$key}--background: color-mix(in hsl, hsl(#{$base} / var(--#{$key}_opacity--background, 1)), #ffff 80%);
+		--#{$key}--foreground: $contrast;
 	}
 }

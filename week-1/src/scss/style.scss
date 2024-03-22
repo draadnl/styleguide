@@ -3,10 +3,42 @@
 
 :root {
 	$base_colors: (
-		"color-1": "5deg 78% 57%",
-		"color-2": "32deg 100% 95%",
+		"color-1": ("5deg 78% 57%", "32deg 100% 95%"),
+		"color-2": ("32deg 100% 95%", "0deg 0% 0%"),
 	);
 	@include generate-colors($base_colors);
+
+	--heading-1__font-size: 2rem;
+	--font-size--sm: 1rem;
+
+	@media (min-width: 37.5rem) { // 600px
+		--heading-1__font-size: 2.75rem;
+		--font-size--sm: 1.125rem;
+	}
+
+	/* Start Header */
+		--header__container-row-gap: 2rem;
+	--header__logos-gap: 50px;
+	--header__logos-size: 40px;
+	--header__logos-padding-block: 1rem;
+	--header__logos-padding-inline: 1rem;
+
+	@media (min-width: 37.5rem) { // 600px
+		--header__container-row-gap: 3.125rem;
+		--header__logos-gap: 50px;
+		--header__logos-size: 60px;
+		--header__logos-padding-block: 1.5625rem;
+		--header__logos-padding-inline: 2.8125rem;
+	}
+	
+	@media (min-width: 990px) { // 990px
+		--header__logos-gap: 100px;
+		--header__logos-size: 75px;
+		--header__logos-padding-block: 1.5625rem;
+		--header__logos-padding-inline: 2.8125rem;
+	}
+	/* End Header */
+
 }
 
 h1 {
@@ -31,4 +63,22 @@ h5 {
 
 h6 {
 	@include heading-6;
+}
+
+body {
+    --container-column-width: calc((var(--container-width, 83.75rem) - var(--container-gutter, 1rem) * (var(--container-columns, 12) - 1)) / var(--container-columns, 12));
+    @include grid-layout;
+
+    :where(&)>* {
+        @include grid-layout;
+        grid-column: 1 / -1;
+        margin-block-end: 9rem;
+        position: relative;
+        isolation: isolate;
+        overflow: clip; 
+
+        @supports (grid-template-columns: subgrid) and (not (-webkit-hyphens:none)) { 
+            grid-template-columns: subgrid;
+        }
+    }
 }

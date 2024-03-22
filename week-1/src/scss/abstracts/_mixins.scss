@@ -75,12 +75,7 @@
 	line-height: var(--heading-6__line-height, 1.2);
 }
 
-$base_colors: (
-	"color-1": ("5deg 78% 57%", "0deg 0% 100%"),
-	"color-2": ("32deg 100% 95%", "0deg 0% 100%"),
-);
-
-@mixin generate-color ($colors) {
+@mixin generate-colors ($colors) {
 	@each $key, $val in $colors {
 		$base: nth($val, 1);
 		$contrast: nth($val, 2);
@@ -88,6 +83,26 @@ $base_colors: (
 		--#{$key}: hsl(#{$base} / var(--#{$key}_opacity, 1));
 		--#{$key}--hover: color-mix(in hsl, hsl(#{$base} / var(--#{$key}_opacity--hover, 1)), #000 10%);
 		--#{$key}--background: color-mix(in hsl, hsl(#{$base} / var(--#{$key}_opacity--background, 1)), #ffff 80%);
-		--#{$key}--foreground: $contrast;
+		--#{$key}--foreground: hsl(#{$contrast} / var(--#{$key}_opacity--foreground, 1));
 	}
 }
+
+@mixin grid-layout () {
+	display: grid;
+	grid-template-columns:
+		MINMAX(var(--container-min-space, 1rem), 1fr) repeat(var(--container-columns, 12),
+		MINMAX(0, var(--container-column-width))) MINMAX(var(--container-min-space, 1rem), 1fr);
+	grid-auto-flow: column;
+	column-gap: var(--container-gutter, 1rem);
+
+
+}
+
+@mixin container ( $prefix ) { 
+	@include grid-layout;
+	grid-column: var(--#{$prefix}-grid-column, 2 / -2);
+
+	@supports (grid-template-columns: subgrid) and (not (-webkit-hyphens:none)) { 
+		grid-template-columns: subgrid;
+	}
+} 	

@@ -1,0 +1,91 @@
+@use '../abstracts/' as *;
+
+.header {
+	background: var(--header__background, var(--color-1));
+	color: var(--header__foreground, var(--color-1--foreground));
+	
+	@media (min-width: 990px) { // 990px
+		min-height: var(--header__min-height, 42.5rem); // Default: 680px
+		grid-template-rows: 1fr auto 1fr;
+	}
+
+	&__container {
+		@include container( header );
+		--header-grid-column: 2 / -2;
+		grid-row: 2;
+		row-gap: var(--header__container-row-gap, 3.125rem); // Default: 50px
+		padding-block: var(--header__container-padding-block, 3.125rem); // Default: 50px
+
+		@media (min-width: 990px) { // 990px
+			--header-grid-column: 2 / 10;
+		}
+	}
+
+	&__heading {
+		grid-column: 1 / -1;
+
+		@media (min-width: 990px) { // 990px
+			grid-column: 1 / -3;
+		}
+	}
+
+	&__content {
+		a {
+			color: var(--header__foreground, var(--color-1--foreground));
+		}
+	}
+
+	&__logos {
+		grid-column: 1 / -1;
+		background: var(--header__logos-background, var(--color-2));
+		color: var(--header__logos-foreground, var(--color-2--foreground));
+		border-radius: var(--header__logos-radius, 0.3125rem);
+		box-shadow: var(--header__logos-shadow, var(--shadow-1));
+		overflow: clip;
+		padding: var(--header__logos-padding-block, 1.5625rem) var(--header__logos-padding-inline, 2.8125rem); // Default: 25px 45px
+
+		p {
+			font-size: var(--header__logos-font-size, var(--font-size--xs, 0.875rem)); // Default: 14px
+		}
+	}
+
+	&__logos-list {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		gap: var(--header__logos-gap, 3.125rem); // Default: 50px
+		width: max-content;
+		animation: ticker var(--header__logos-speed, 30s) linear infinite;
+	}
+
+	&__logos-img {
+		width: var(--header__logos-size, 6.25rem); // Default: 100px
+		height: var(--header__logos-size, 6.25rem); // Default: 100px;
+	}
+
+	&__image {
+		grid-column: 1 / -1;
+		grid-row: 3;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
+		object-position: center;
+		position: relative;
+		z-index: -1;
+		
+		@media (min-width: 990px) { // 990px
+			grid-column: 9 / -1;
+			grid-row: 1 / -1;
+			height: 100%;
+		}
+	}
+}
+
+@keyframes ticker {
+	0% {
+		translate: 0% 0%;
+	}
+	100% {
+		translate: calc(var(--header__logos-width) * -1) 0%;
+	}
+}
